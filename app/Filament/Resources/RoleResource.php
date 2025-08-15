@@ -94,14 +94,19 @@ class RoleResource extends Resource
                                 'create_articles' => 'Create Articles',
                                 'edit_articles' => 'Edit Articles',
                                 'delete_articles' => 'Delete Articles',
-                                'view_heroes' => 'View Heroes',
-                                'create_heroes' => 'Create Heroes',
-                                'edit_heroes' => 'Edit Heroes',
-                                'delete_heroes' => 'Delete Heroes',
                                 'view_contacts' => 'View Contacts',
                                 'edit_contacts' => 'Edit Contacts',
                                 'delete_contacts' => 'Delete Contacts',
+                                'view_links' => 'View Links',
+                                'create_links' => 'Create Links',
+                                'edit_links' => 'Edit Links',
+                                'delete_links' => 'Delete Links',
                                 'view_dashboard' => 'View Dashboard',
+                                // New permissions for Hero Slides  
+                                'view_hero_slides' => 'View Hero Slides',
+                                'create_hero_slides' => 'Create Hero Slides',
+                                'edit_hero_slides' => 'Edit Hero Slides',
+                                'delete_hero_slides' => 'Delete Hero Slides',
                             ])
                             ->columns(3)
                             ->gridDirection('row'),

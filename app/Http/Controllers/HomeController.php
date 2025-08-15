@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
-use App\Models\Contact; // Tambahkan import ini
+use App\Models\Contact;
+use App\Models\Link;
+use App\Models\HeroSlide;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,7 @@ class HomeController extends Controller
         $serviceDatas = [
             [
                 "brandImage" => "images/service_1.png",
-                "buttonStatus" => "Order"
+                "buttonStatus" => "Booking"
             ],
             [
                 "brandImage" => "images/service_2.png",
@@ -30,11 +32,11 @@ class HomeController extends Controller
             ],
             [
                 "brandImage" => "images/service_5.png",
-                "buttonStatus" => "Visit"
+                "buttonStatus" => "Booking"
             ],
             [
                 "brandImage" => "images/service_6.png",
-                "buttonStatus" => "Other"
+                "buttonStatus" => "Booking"
             ],
         ];
         
@@ -44,6 +46,9 @@ class HomeController extends Controller
             ->take(3)
             ->get();
             
+        // Ambil slide hero aktif dari database
+        $heroSlides = HeroSlide::active()->ordered()->get();
+
         $partnerDatas = [
             [
                 'image' => 'images/partner_1.png'
@@ -73,7 +78,12 @@ class HomeController extends Controller
                 'image' => 'images/partner_9.png'
             ],
         ];
-        return view('home.index', compact('title', 'serviceDatas', 'articleDatas', 'partnerDatas'));
+        
+        // Mengambil link WhatsApp dan Google Form
+        $linkBookingLinks = Link::active()->byType('link_booking')->ordered()->get();
+        $linkDaftarLinks = Link::active()->byType('link_daftar')->ordered()->get();
+        
+        return view('home.index', compact('title', 'serviceDatas', 'articleDatas', 'partnerDatas', 'linkBookingLinks', 'linkDaftarLinks', 'heroSlides'));
     }
 
     public function article()
@@ -85,7 +95,11 @@ class HomeController extends Controller
             ->orderBy('published_at', 'desc')
             ->paginate(6);
             
-        return view('article.index', compact('title', 'articleDatas'));
+        // Mengambil link WhatsApp dan Google Form
+        $linkBookingLinks = Link::active()->byType('link_booking')->ordered()->get();
+        $linkDaftarLinks = Link::active()->byType('link_daftar')->ordered()->get();
+            
+        return view('article.index', compact('title', 'articleDatas', 'linkBookingLinks', 'linkDaftarLinks'));
     }
 
     public function detailArticle($slug)
@@ -102,13 +116,22 @@ class HomeController extends Controller
             ->take(6)
             ->get();
             
-        return view('article.detail', compact('title', 'data', 'anotherArticles'));
+        // Mengambil link WhatsApp dan Google Form
+        $linkBookingLinks = Link::active()->byType('link_booking')->ordered()->get();
+        $linkDaftarLinks = Link::active()->byType('link_daftar')->ordered()->get();
+
+        return view('article.detail', compact('title', 'data', 'anotherArticles', 'linkBookingLinks', 'linkDaftarLinks'));
     }
 
     public function contact()
     {
         $title = 'Contact';
-        return view('contact.index', compact('title'));
+        
+        // Mengambil link WhatsApp dan Google Form
+        $linkBookingLinks = Link::active()->byType('link_booking')->ordered()->get();
+        $linkDaftarLinks = Link::active()->byType('link_daftar')->ordered()->get();
+
+        return view('contact.index', compact('title', 'linkBookingLinks', 'linkDaftarLinks'));
     }
 
     public function storeContact(Request $request)
@@ -131,40 +154,62 @@ class HomeController extends Controller
     public function  aboutUs()
     {
         $title = 'Tentang Kami';
-        return view('about_us.index', compact('title'));
+        
+        // Mengambil link WhatsApp dan Google Form
+        $linkBookingLinks = Link::active()->byType('link_booking')->ordered()->get();
+        $linkDaftarLinks = Link::active()->byType('link_daftar')->ordered()->get();
+
+        return view('about_us.index', compact('title', 'linkBookingLinks', 'linkDaftarLinks'));
     }
 
     public function service()
     {
         $title = 'Layanan';
         $currentIndex = 0;
+        
+        // Mengambil link WhatsApp dan Google Form
+        $linkBookingLinks = Link::active()->byType('link_booking')->ordered()->get();
+        $linkDaftarLinks = Link::active()->byType('link_daftar')->ordered()->get();
+        
         $serviceDatas = [
             [
                 "brandImage" => "images/img_service_1.svg",
-                "html" => view('service.service_1')->render()
+                "html" => view('service.service_1', compact('linkBookingLinks', 'linkDaftarLinks'))->render()
             ],
             [
                 "brandImage" => "images/img_service_2.svg",
-                "html" => view('service.service_2')->render()
+                "html" => view('service.service_2', compact('linkBookingLinks', 'linkDaftarLinks'))->render()
             ],
             [
                 "brandImage" => "images/img_service_3.svg",
-                "html" => view('service.service_3')->render()
+                "html" => view('service.service_3', compact('linkBookingLinks', 'linkDaftarLinks'))->render()
             ],
             [
                 "brandImage" => "images/img_service_4.svg",
-                "html" => view('service.service_4')->render()
+                "html" => view('service.service_4', compact('linkBookingLinks', 'linkDaftarLinks'))->render()
             ],
             [
                 "brandImage" => "images/img_service_5.svg",
-                "html" => view('service.service_5')->render()
+                "html" => view('service.service_5', compact('linkBookingLinks', 'linkDaftarLinks'))->render()
             ],
             [
                 "brandImage" => "images/img_service_6.svg",
-                "html" => view('service.service_6')->render()
+                "html" => view('service.service_6', compact('linkBookingLinks', 'linkDaftarLinks'))->render()
             ],
         ];
-        return view('service.index', compact('title', 'currentIndex', 'serviceDatas'));
+
+        return view('service.index', compact('title', 'currentIndex', 'serviceDatas', 'linkBookingLinks', 'linkDaftarLinks'));
+    }
+
+    public function detailService($slug)
+    {
+        $title = 'Detail Layanan';
+        
+        // Mengambil link WhatsApp dan Google Form
+        $linkBookingLinks = Link::active()->byType('link_booking')->ordered()->get();
+        $linkDaftarLinks = Link::active()->byType('link_daftar')->ordered()->get();
+
+        return view('service.detail', compact('title', 'slug', 'linkBookingLinks', 'linkDaftarLinks'));
     }
 
     public function notFound()

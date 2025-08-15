@@ -125,7 +125,7 @@
 
             /* Naikkan swiper dan konten lebih ke atas */
             .mySwiper {
-                margin-top: -35.5rem !important;
+                margin-top: -33.5rem !important;
             }
             .carousel-card,
             .swiper-slide-next .carousel-card,
@@ -135,7 +135,7 @@
                 padding: 0.7rem 1rem;
                 /* Efek animasi dan shadow untuk mobile */
                 box-shadow: 0 6px 24px 0 rgba(0,0,0,0.22), 0 2px 8px 0 rgba(0,0,0,0.18);
-                margin-top: -35.5rem !important;
+                margin-top: -55.5rem !important;
                 /* Transisi lebih halus dan menarik */
                 transition: 
                     width 0.45s cubic-bezier(.4,2,.6,1),

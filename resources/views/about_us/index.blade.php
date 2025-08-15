@@ -360,7 +360,13 @@
                     <i>jika kamu ingin menjadi bagian dari perjalanan 90s, bisa langsung kontak kami ya!</i>
                 </div>
                 <div class="flex justify-center mt-6" data-aos="zoom-in" data-aos-delay="200">
-                    <button class="btn btn-orange rounded-full py-4 px-8 fw-500 aboutus-btn font-bold"><b>KONTAK KAMI</b></button>
+                    @if($linkBookingLinks->isNotEmpty())
+                    <a href="{{ $linkBookingLinks->first()->url }}"
+                       @if($linkBookingLinks->first()->open_new_tab) target="_blank" @endif
+                           class="btn btn-orange rounded-full py-4 px-8 fw-500 aboutus-btn font-bold text-decoration-none"><b>KONTAK KAMI</b></a>
+                    @else
+                        <button type="button" class="btn btn-orange px-8 py-2 rounded-full aboutus-btn" style="font-weight: 500; font-size: 20px;"><b>KONTAK KAMI</b></button>
+                    @endif
                 </div>
             </div>
         </div>
@@ -372,7 +378,13 @@
                 Dapatkan diskon khusus dengan membership
             </div>
             <div data-aos="zoom-in" data-aos-delay="200">
-                <button type="button" class="btn btn-orange px-8 py-2 rounded-full aboutus-btn font-bold">DAFTAR</button>
+                @if($linkDaftarLinks->isNotEmpty())
+                    <a href="{{ $linkDaftarLinks->first()->url }}"
+                       @if($linkDaftarLinks->first()->open_new_tab) target="_blank" @endif
+                       class="btn btn-orange px-8 py-2 rounded-full aboutus-btn font-bold text-decoration-none">DAFTAR</a>
+                @else
+                    <button type="button" class="btn btn-orange px-8 py-2 rounded-full aboutus-btn" style="font-weight: 500; font-size: 20px;">DAFTAR</button>
+                @endif
             </div>
         </div>
     </section>

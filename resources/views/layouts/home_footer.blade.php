@@ -24,12 +24,14 @@
                     <h2 class="mb-6 text-lg text-orange font-medium">KUNJUNGI KAMI</h2>
                     <ul class="footer-contact-list">
                         <li>
-                            Jl Achmad Adnawijaya, Bogor Utara
+                            <strong>90s Autoworks - Dramaga:</strong><br>
+                            Jl. Raya Dramaga No. 22, RT.03/RW.03, Margajaya,<br> Kec. Bogor Bar., Kota Bogor, Jawa Barat 16116
                         </li>
-                        <li>
-                            Jl Raya Bogor, Bogor Barat
+                        <li class="mt-4">
+                            <strong>90s Autoworks - Pandu Raya:</strong><br>
+                            Jl. Achmad Adnawijaya No.8, Tegal Gundil,<br> Kec. Bogor Utara, Kota Bogor, Jawa Barat 16152
                         </li>
-                        <li>
+                        <li class="mt-4">
                             +62 851-8680-3428
                         </li>
                         <li>
@@ -39,7 +41,7 @@
                 </div>
                 <div class="footer-app p-8" data-aos="fade-up" data-aos-delay="300">
                     <h2 class="mb-6 text-lg text-orange font-medium">UNDUH APLIKASI</h2>
-                    <button type="button" class="footer-btn btn btn-orange py-2 px-10 rounded-3xl font-medium">
+                    <button type="button" class="footer-btn btn btn-orange py-2 px-10 rounded-3xl font-medium" style="font-weight: bold; font-size: 15px;">
                         UNDUH
                     </button>
                 </div>
@@ -52,7 +54,7 @@
                                 placeholder="Email">
                         </div>
                         <div>
-                            <button class="footer-send-btn btn btn-orange py-2 px-10 rounded-3xl font-medium font-bold">
+                            <button class="footer-send-btn btn btn-orange py-2 px-10 rounded-3xl font-medium font-bold" style="font-weight: bold; font-size: 15px;">
                                 SEND
                             </button>
                         </div>

@@ -47,7 +47,8 @@ class ArticleResource extends Resource
                             ->label('Gambar')
                             ->image()
                             ->directory('articles')
-                            ->visibility('public'),
+                            ->visibility('public')
+                            ->disk('public'),
                         Forms\Components\RichEditor::make('content')
                             ->label('Konten')
                             ->required()
@@ -80,7 +81,8 @@ class ArticleResource extends Resource
                     ->label('Penulis')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image')
-                    ->label('Gambar'),    
+                    ->label('Gambar')
+                    ->disk('public'),
                 Tables\Columns\TextColumn::make('description')
                     ->label('Deskripsi')
                     ->searchable(),
@@ -162,5 +164,11 @@ class ArticleResource extends Resource
     public static function canDeleteAny(): bool
     {
         return Auth::user()->hasPermission('delete_articles');
+    }
+
+    // Hide from navigation if user doesn't have permission
+    public static function shouldRegisterNavigation(): bool
+    {
+        return Auth::user()->hasPermission('view_articles');
     }
 }

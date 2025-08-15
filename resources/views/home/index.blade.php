@@ -2,207 +2,200 @@
 @section('content')
     @push('css')
         <style>
-           
-
-            @media (max-width: 640px) {
-                .hero-section {
-                    background-position: center top;
-                }
-            }
-
-            .about_us-section {
-                background-image: url('images/banner_about_us_home.png');
-                background-repeat: no-repeat;
-                background-position: center center;
-                background-size: cover;
+            .hero-section {
+                position: relative;
                 width: 100vw;
                 height: 100vh;
                 margin: 0;
                 padding: 0;
+                overflow: hidden;
             }
-
-            @media (max-width: 640px) {
-                .about_us-section {
-                    background-position: center bottom;
-                }
+            .hero-slider {
+                width: 100vw;
+                height: 100vh;
+                position: relative;
             }
-
+            .hero-slide {
+                width: 100vw;
+                height: 100vh;
+                height: 100dvh; /* dynamic viewport */
+                object-fit: cover; /* desktop tetap cover */
+                object-position: center center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transition: opacity 0.8s cubic-bezier(.4,0,.2,1);
+                z-index: 1;
+            }
+            .hero-slide.active {
+                opacity: 1;
+                z-index: 2;
+            }
+            .hero-slider-nav {
+                position: absolute;
+                bottom: 32px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 10px;
+                z-index: 10;
+            }
+            .hero-slider-dot {
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.7);
+                border: 2px solid #FDC30F;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+            .hero-slider-dot.active {
+                background: #FDC30F;
+            }
             /* Responsive enhancements */
             .article-shapes {
                 display: block;
             }
-            
             @media (max-width: 768px) {
                 .article-shapes {
                     display: none !important;
                 }
-
+                .hero-slider-dot {
+                    width: 10px;
+                    height: 10px;
+                }
             }
-            
             @media (max-width: 1024px) {
                 .service-title {
                     font-size: 2.5rem !important;
                 }
-                
                 .app-section-title {
                     font-size: 2.8rem !important;
                 }
-                
                 .article-title {
                     font-size: 3rem !important;
                 }
-                
                 .partner-title {
                     font-size: 3rem !important;
                 }
             }
-
             @media (max-width: 768px) {
                 .service-title {
                     font-size: 2rem !important;
                     margin-bottom: 1rem !important;
                 }
-                
                 .app-section {
                     height: auto !important;
                     padding: 2rem 1rem !important;
                     border-radius: 0 0 2rem 2rem !important;
                 }
-                
                 .app-content {
                     flex-direction: column !important;
                     text-align: center !important;
                     gap: 2rem;
                 }
-                
                 .app-section-title {
                     font-size: 2.2rem !important;
                     line-height: 1.2 !important;
                     margin-bottom: 1.5rem !important;
                 }
-                
                 .app-button {
                     padding: 8px 40px !important;
                     font-size: 20px !important;
                 }
-                
                 .app-phone {
                     width: 24rem !important;
                     max-width: 100% !important;
                 }
-                
                 .article-grid {
                     flex-direction: column !important;
                     gap: 1.5rem !important;
                 }
-                
                 .article-card {
                     width: 100% !important;
                     max-width: 20rem !important;
                     margin: 0 auto !important;
                 }
-                
                 .article-title {
                     font-size: 2.5rem !important;
                 }
-                
                 .partner-title {
                     font-size: 2.5rem !important;
                 }
-                
                 .partner-grid {
                     flex-wrap: wrap !important;
                     justify-content: center !important;
                     gap: 1rem !important;
                 }
-                
                 .partner-item {
                     flex: 0 0 auto !important;
                 }
-                
                 .partner-item img {
                     max-width: 120px !important;
                     height: auto !important;
                 }
             }
-
             @media (max-width: 640px) {
                 .service-section {
                     padding: 3rem 0 !important;
                 }
-                
                 .service-grid {
                     gap: 1rem !important;
                     padding: 0 1rem !important;
                 }
-                
                 .service-card {
                     width: 180px !important;
                     padding: 1rem !important;
                 }
-                
                 .service-card img {
                     max-height: 80px !important;
                 }
-                
                 .service-button {
                     padding: 4px 20px !important;
                     font-size: 12px !important;
                 }
-                
                 .app-section-title {
                     font-size: 1.8rem !important;
                     padding: 0 1rem !important;
                 }
-                
                 .app-phone {
                     width: 18rem !important;
                 }
-                
                 .article-title {
                     font-size: 2rem !important;
                     padding: 0 1rem !important;
                 }
-                
                 .partner-title {
                     font-size: 2rem !important;
                     padding: 0 1rem !important;
                 }
-                
                 .partner-section {
                     padding: 2rem 0 4rem 0 !important;
                 }
-                
                 .partner-item img {
                     max-width: 100px !important;
                 }
             }
-
             @media (max-width: 480px) {
                 .service-title {
                     font-size: 1.5rem !important;
                 }
-                
                 .service-card {
                     width: 160px !important;
                 }
-                
                 .app-section-title {
                     font-size: 1.5rem !important;
                 }
-                
                 .app-phone {
                     width: 16rem !important;
                 }
-                
                 .article-title {
                     font-size: 1.8rem !important;
                 }
-                
                 .partner-title {
                     font-size: 1.8rem !important;
                 }
-                
                 .partner-item img {
                     max-width: 80px !important;
                 }
@@ -211,7 +204,7 @@
     @endpush
 
     {{-- AOS CDN --}}
-    @push('scripts')
+    @push('script')
         <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
         <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
         <script>
@@ -223,62 +216,148 @@
                 });
             });
         </script>
+        <script>
+            // Hero Slider with Improved Initialization
+            document.addEventListener('DOMContentLoaded', function () {
+                // Add small delay to ensure all elements are loaded
+                setTimeout(function() {
+                    const slides = document.querySelectorAll('.hero-slide');
+                    const dots = document.querySelectorAll('.hero-slider-dot');
+                    let current = 0;
+                    let timer = null;
+                    const slideCount = slides.length;
+                    
+                    console.log('Hero slider initialized. Slides found:', slideCount);
+                    
+                    if (slideCount === 0) {
+                        console.error('No slides found!');
+                        return;
+                    }
+                    
+                    function showSlide(idx) {
+                        // Remove active class from all slides
+                        slides.forEach((slide, i) => {
+                            if (i === idx) {
+                                slide.classList.add('active');
+                            } else {
+                                slide.classList.remove('active');
+                            }
+                        });
+                        
+                        // Update dots
+                        dots.forEach((dot, i) => {
+                            if (i === idx) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+                        
+                        current = idx;
+                    }
+                    
+                    function nextSlide() {
+                        const next = (current + 1) % slideCount;
+                        console.log('Next slide:', next);
+                        showSlide(next);
+                    }
+                    
+                    function startAutoSlide() {
+                        if (timer) clearInterval(timer);
+                        console.log('Starting auto slide...');
+                        timer = setInterval(nextSlide, 4000); // Increased to 4 seconds
+                    }
+                    
+                    function stopAutoSlide() {
+                        if (timer) {
+                            clearInterval(timer);
+                            timer = null;
+                        }
+                    }
+                    
+                    // Add click handlers to dots
+                    dots.forEach((dot, idx) => {
+                        dot.addEventListener('click', function () {
+                            stopAutoSlide();
+                            showSlide(idx);
+                            startAutoSlide();
+                        });
+                    });
+                    
+                    // Initialize first slide
+                    showSlide(0);
+                    
+                    // Start auto slide after a short delay
+                    setTimeout(startAutoSlide, 1000);
+                    
+                }, 500); // Wait 500ms for DOM to be fully ready
+            });
+        </script>
     @endpush
 
     <section class="hero-section relative overflow-hidden h-screen bg-center bg-cover bg-no-repeat" x-data="{ mobileNavOpen: false }">
         @include('layouts.topbar')
-    </section>
-
-    @php
-        $hero = App\Models\Hero::active()->ordered()->first();
-    @endphp
-
-    <section class="hero bg-black text-white relative w-full h-screen overflow-hidden">
-        <div class="container mx-auto px-4 h-full relative">
-            @if($hero)
-                <!-- Kiri: Teks Hero (desktop) -->
-                <div 
-                    class="hidden lg:block absolute animate-fade-in-left"
-                    style="top: 25%; left: 12%; width: 900px; height: 300px; max-width: none;"
-                    data-aos="fade-right"
-                    data-aos-delay="100"
-                >
-                    <img src="{{ $hero->hero_image ? Storage::disk('public')->url($hero->hero_image) : asset('images/supers1.png') }}" 
-                         alt="{{ $hero->hero_alt_text }}"
-                         class="w-full h-auto transition-transform duration-500 hover:scale-105">
-                </div>
-    
-                <!-- Kanan: Maskot (desktop) -->
-                <div 
-                    class="hidden lg:block absolute animate-fade-in-right"
-                    style="top: 20%; left: 58%; width: 48vw; max-width: 1000px;"
-                    data-aos="fade-left"
-                    data-aos-delay="200"
-                >
-                    <img src="{{ $hero->mascot_image ? Storage::disk('public')->url($hero->mascot_image) : asset('images/Maskot.png') }}" 
-                         alt="{{ $hero->mascot_alt_text }}"
-                         class="w-full h-auto transition-transform duration-500 hover:scale-105">
-                </div>
-    
-                <!-- Responsive Mobile: Hero dan Maskot ditumpuk -->
-                <div class="block lg:hidden flex flex-col items-center justify-center h-full w-full"
-                    data-aos="fade-up"
-                    data-aos-delay="100"
-                >
-                    <img src="{{ $hero->hero_image ? Storage::disk('public')->url($hero->hero_image) : asset('images/supers1.png') }}" 
-                         alt="{{ $hero->hero_alt_text }}"
-                         class="w-4/5 max-w-xs mb-4 mx-auto transition-transform duration-500 hover:scale-105">
-                    <img src="{{ $hero->mascot_image ? Storage::disk('public')->url($hero->mascot_image) : asset('images/Maskot.png') }}" 
-                         alt="{{ $hero->mascot_alt_text }}"
-                         class="w-3/5 max-w-[180px] mx-auto transition-transform duration-500 hover:scale-105">
+        <div class="hero-slider">
+            {{-- Hanya tampilkan gambar dari database, urutkan berdasarkan sort_order dan hanya yang is_active --}}
+            @php
+                $activeSlides = isset($heroSlides) ? $heroSlides->where('is_active', 1)->sortBy('sort_order') : collect();
+            @endphp
+            @if($activeSlides->count())
+                <div class="w-full h-full flex flex-col sm:flex-row items-center justify-center sm:gap-0">
+                    @foreach($activeSlides as $slide)
+                        <div class="w-full sm:w-auto flex-1 flex items-center justify-center">
+                            <img 
+                                src="{{ asset('storage/' . $slide->image_path) }}" 
+                                alt="{{ $slide->title ?? 'Hero Slide' }}" 
+                                class="hero-slide object-contain sm:object-contain md:object-cover w-full sm:w-screen h-[40vh] sm:h-screen md:h-[90vh] sm:rounded-none transition-all duration-300"
+                                style="max-width: 100%;"
+                            />
+                        </div>
+                    @endforeach
                 </div>
             @else
-                <!-- Fallback jika tidak ada data hero -->
-                <div class="flex items-center justify-center h-full">
-                    <p class="text-white text-xl">No hero content available</p>
+                <div class="flex items-center justify-center h-full w-full" style="height: 60vh;">
+                    <div class="text-center text-2xl font-bold text-orange">
+                        Belum ada data slide yang tersedia.
+                    </div>
                 </div>
             @endif
         </div>
+        <style>
+            @media (max-width: 640px) {
+                .hero-slider {
+                    padding: 0;
+                    margin: 0;
+                }
+                .hero-slide {
+                    height: 25vh !important;
+                    border-radius: 0 !important;
+                    margin: 0;
+                    object-fit: contain !important; /* Supaya gambar tidak terpotong di mobile */
+                }
+                .hero-section {
+                    margin: 0;
+                    padding: 0;
+                    height: 30vh;
+                }
+            }
+            @media (max-width: 1024px) and (min-width: 641px) {
+                .hero-slider {
+                    padding: 0;
+                    margin: 0;
+                }
+                .hero-slide {
+                    height: 50vh !important;
+                    border-radius: 0 !important;
+                    margin: 0;
+                }
+                .hero-section {
+                    margin: 0;
+                    padding: 0;
+                    height: 50vh;
+                }
+            }
+        </style>
     </section>
 
     <!-- tentang kami -->

@@ -168,8 +168,15 @@
             </div>
         </div>
         <div class="flex justify-center items-center">
-            <button type="button" class="btn bg-orange text-black rounded-full service2-btn"
-                style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem;">BOOKING SEKARANG</button>
+            @if($linkBookingLinks->isNotEmpty())
+                <a href="{{ $linkBookingLinks->first()->url }}"
+                   @if($linkBookingLinks->first()->open_new_tab) target="_blank" @endif
+                   class="btn bg-orange text-black rounded-full service2-btn text-decoration-none"
+                   style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem;">BOOKING SEKARANG</a>
+            @else
+                <button type="button" class="btn bg-orange text-black rounded-full service2-btn"
+                    style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem;">BOOKING SEKARANG</button>
+            @endif
         </div>
         <div class="absolute left-0 -bottom-9 service2-hide-on-responsive">
             <img src="{{ asset('images/shape_service_23.svg') }}" alt="shape service 23" class="service2-shape-23" style="width: 11rem">
@@ -214,8 +221,15 @@
         *Untuk info lebih detail, izinkan team representatif kami menghubungi anda.
     </div>
     <div class="flex justify-center items-center">
-        <button type="button" class="btn bg-orange text-black rounded-full service2-btn font-bold"
-            style="font-size: 1rem; font-weight: 900; padding: 1.5rem 4rem;"><b>BOOKING SEKARANG</b></button>
+        @if($linkBookingLinks->isNotEmpty())
+            <a href="{{ $linkBookingLinks->first()->url }}"
+               @if($linkBookingLinks->first()->open_new_tab) target="_blank" @endif
+               class="btn bg-orange text-black rounded-full service2-btn font-bold text-decoration-none"
+               style="font-size: 1rem; font-weight: 900; padding: 1.5rem 4rem;"><b>BOOKING SEKARANG</b></a>
+        @else
+            <button type="button" class="btn bg-orange text-black rounded-full service2-btn font-bold"
+                style="font-size: 1rem; font-weight: 900; padding: 1.5rem 4rem;"><b>BOOKING SEKARANG</b></button>
+        @endif
     </div>
 </div>
 
@@ -256,8 +270,15 @@
         *Untuk info lebih detail, izinkan team representatif kami menghubungi anda.
     </div>
     <div class="flex justify-center items-center">
-        <button type="button" class="btn bg-orange text-black rounded-full service2-btn font-bold"
-            style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem;">BOOKING SEKARANG</button>
+        @if($linkBookingLinks->isNotEmpty())
+            <a href="{{ $linkBookingLinks->first()->url }}"
+               @if($linkBookingLinks->first()->open_new_tab) target="_blank" @endif
+               class="btn bg-orange text-black rounded-full service2-btn font-bold text-decoration-none"
+               style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem; font-weight: bold;">BOOKING SEKARANG</a>
+        @else
+            <button type="button" class="btn bg-orange text-black rounded-full service2-btn font-bold"
+                style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem; font-weight: bold;">BOOKING SEKARANG</button>
+        @endif
     </div>
 </div>
 
@@ -267,7 +288,14 @@
             Dapatkan diskon khusus dengan membership
         </div>
         <div>
-            <button type="button" class="btn btn-orange px-8 py-2 rounded-full font-bold">DAFTAR</button>
+            @if($linkDaftarLinks->isNotEmpty())
+                <a href="{{ $linkDaftarLinks->first()->url }}"
+                   @if($linkDaftarLinks->first()->open_new_tab) target="_blank" @endif
+                   class="btn btn-orange px-8 py-2 rounded-full font-bold text-decoration-none"
+                   style="font-weight: bold; font-size: 15px;">DAFTAR</a>
+            @else
+                <button type="button" class="btn btn-orange px-8 py-2 rounded-full font-bold" style="font-weight: bold; font-size: 15px;">DAFTAR</button>
+            @endif
         </div>
     </div>
 </div>

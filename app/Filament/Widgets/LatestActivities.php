@@ -4,6 +4,8 @@ namespace App\Filament\Widgets;
 
 use App\Models\Article;
 use App\Models\Contact;
+use App\Models\HeroSlide;
+use App\Models\Link;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -21,7 +23,7 @@ class LatestActivities extends BaseWidget
         return $table
             ->query($this->getTableQuery())
             ->heading('Aktivitas Terbaru')
-            ->description('Artikel dan pesan kontak terbaru')
+            ->description('Artikel, Link, Hero Slides, dan pesan kontak terbaru')
             ->poll('60s')
             ->columns([
                 Tables\Columns\TextColumn::make('type')
@@ -30,6 +32,8 @@ class LatestActivities extends BaseWidget
                     ->color(fn (string $state): string => match ($state) {
                         'Artikel' => 'info',
                         'Kontak' => 'warning',
+                        'Link' => 'success',
+                        'Hero Slide' => 'primary',
                         default => 'gray',
                     }),
                 Tables\Columns\TextColumn::make('title')
@@ -55,12 +59,14 @@ class LatestActivities extends BaseWidget
 
     protected function getTableQuery(): Builder
     {
-        // Get recent articles and contacts separately, then combine IDs
+        // Ambil 5 data terbaru dari tiap sumber
         $recentArticles = Article::orderBy('created_at', 'desc')->limit(5)->pluck('id');
         $recentContacts = Contact::orderBy('created_at', 'desc')->limit(5)->pluck('id');
-        
-        // Use Article as base model for the union
-        return Article::select([
+        $recentLinks = Link::orderBy('created_at', 'desc')->limit(5)->pluck('id');
+        $recentSlides = HeroSlide::orderBy('created_at', 'desc')->limit(5)->pluck('id');
+
+        // Gunakan Article sebagai base model untuk union
+        $query = Article::select([
             'id',
             DB::raw("'Artikel' as type"),
             'title',
@@ -80,6 +86,29 @@ class LatestActivities extends BaseWidget
             ])
             ->whereIn('id', $recentContacts)
         )
-        ->orderBy('created_at', 'desc');
+        ->union(
+            Link::select([
+                'id',
+                DB::raw("'Link' as type"),
+                'name as title',
+                'description',
+                'created_at',
+                DB::raw("CONCAT('/admin/links/', id, '/edit') as url"),
+            ])
+            ->whereIn('id', $recentLinks)
+        )
+        ->union(
+            HeroSlide::select([
+                'id',
+                DB::raw("'Hero Slide' as type"),
+                'title',
+                DB::raw("'' as description"),
+                'created_at',
+                DB::raw("CONCAT('/admin/hero-slides/', id, '/edit') as url"),
+            ])
+            ->whereIn('id', $recentSlides)
+        );
+
+        return $query->orderBy('created_at', 'desc');
     }
 }

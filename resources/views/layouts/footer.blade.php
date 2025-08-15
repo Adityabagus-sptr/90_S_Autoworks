@@ -13,9 +13,15 @@
                 <div class="p-8" style="width: 35rem">
                     <h2 class="mb-6 text-lg text-orange font-medium">VISIT US</h2>
                     <ul class="text-justify">
-                        <li>Jl Achmad Adnawijaya, Bogor Utara</li>
-                        <li>Jl Raya Bogor, Bogor Barat</li>
-                        <li>+62 851-8680-3428</li>
+                        <li>
+                            <strong>90s Autoworks - Dramaga:</strong><br>
+                            Jl. Raya Dramaga No. 22, RT.03/RW.03, Margajaya, Kec. Bogor Barat., Kota Bogor, Jawa Barat 16116
+                        </li>
+                        <li class="mt-4">
+                            <strong>90s Autoworks - Pandu Raya:</strong><br>
+                            Jl. Achmad Adnawijaya No.8, Tegal Gundil, Kec. Bogor Utara, Kota Bogor, Jawa Barat 16152
+                        </li>
+                        <li class="mt-4">+62 851-8680-3428</li>
                         <li>90sautoworks@gmail.com</li>
                     </ul>
                 </div>
@@ -72,7 +78,7 @@
                     <div class="flex flex-row gap-3 pt-3">
                         <input type="email" name="email" id="email" class="px-3 py-2 rounded-full"
                             placeholder="Email">
-                        <button class="btn btn-orange py-2 px-10 rounded-3xl font-medium font-bold">SEND</button>
+                        <button class="btn btn-orange py-2 px-10 rounded-3xl font-medium font-bold" style="font-weight: bold; font-size: 15px;">SEND</button>
                     </div>
                 </div>
             </div>

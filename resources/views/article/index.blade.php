@@ -160,10 +160,17 @@
                 Dapatkan diskon khusus dengan membership
             </div>
             <div data-aos="zoom-in" data-aos-delay="300">
-                <button type="button" class="btn btn-orange btn-orange-interactive px-10 py-2 rounded-full"
-                    style="font-weight: 600"
-                    onclick="window.location.href='{{ url('/membership') }}'"
-                >DAFTAR</button>
+                @if($linkDaftarLinks->isNotEmpty())
+                    <a href="{{ $linkDaftarLinks->first()->url }}" 
+                       @if($linkDaftarLinks->first()->open_new_tab) target="_blank" @endif
+                       class="btn btn-orange btn-orange-interactive px-10 py-2 rounded-full text-decoration-none"
+                       style="font-weight: 600; font-size: 20px; font-weight: bold;">DAFTAR</a>
+                @else
+                    <button type="button" class="btn btn-orange btn-orange-interactive px-10 py-2 rounded-full"
+                        style="font-weight: 600"
+                        onclick="window.location.href='{{ url('/membership') }}'"
+                        style="font-weight: 600; font-size: 20px; font-weight: bold;">DAFTAR</button>
+                @endif
             </div>
         </div>
     </section>

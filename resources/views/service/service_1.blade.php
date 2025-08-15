@@ -160,8 +160,15 @@
         *kamu bisa langsung tanya-tanya ke team representatif kami loh
     </div>
     <div class="flex justify-center items-center">
-        <button type="button" class="btn bg-orange text-black rounded-full"
-            style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem;">BOOKING SEKARANG</button>
+        @if($linkBookingLinks->isNotEmpty())
+            <a href="{{ $linkBookingLinks->first()->url }}"
+               @if($linkBookingLinks->first()->open_new_tab) target="_blank" @endif
+               class="btn bg-orange text-black rounded-full text-decoration-none"
+               style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem; font-weight: bold;">BOOKING SEKARANG</a>
+        @else
+            <button type="button" class="btn bg-orange text-black rounded-full"
+                style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem; font-weight: bold;">BOOKING SEKARANG</button>
+        @endif
     </div>
 </div>
 
@@ -190,8 +197,15 @@
         *kamu bisa langsung tanya-tanya ke team representatif kami loh
     </div>
     <div class="flex justify-center items-center">
-        <button type="button" class="btn bg-orange text-black rounded-full"
-            style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem;">BOOKING SEKARANG</button>
+        @if($linkBookingLinks->isNotEmpty())
+            <a href="{{ $linkBookingLinks->first()->url }}"
+               @if($linkBookingLinks->first()->open_new_tab) target="_blank" @endif
+               class="btn bg-orange text-black rounded-full text-decoration-none"
+               style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem; font-weight: bold;">BOOKING SEKARANG</a>
+        @else
+            <button type="button" class="btn bg-orange text-black rounded-full"
+                style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem; font-weight: bold;">BOOKING SEKARANG</button>
+        @endif
     </div>
 </div>
 
@@ -201,7 +215,14 @@
             Dapatkan diskon khusus dengan membership
         </div>
         <div>
-            <button type="button" class="btn btn-orange px-8 py-2 rounded-full">DAFTAR</button>
+            @if($linkDaftarLinks->isNotEmpty())
+                <a href="{{ $linkDaftarLinks->first()->url }}"
+                   @if($linkDaftarLinks->first()->open_new_tab) target="_blank" @endif
+                   class="btn btn-orange px-8 py-2 rounded-full text-decoration-none"
+                   style="font-weight: bold; font-size: 15px;">DAFTAR</a>
+            @else
+                <button type="button" class="btn btn-orange px-8 py-2 rounded-full" style="font-weight: bold; font-size: 15px;">DAFTAR</button>
+            @endif
         </div>
     </div>
 </div>

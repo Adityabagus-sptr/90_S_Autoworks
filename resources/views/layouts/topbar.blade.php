@@ -210,13 +210,12 @@
                 <button class="relative z-20 inline-block hamburger" x-on:click="mobileNavOpen = !mobileNavOpen" id="mobileMenuBtn">
                     <svg width="51" height="51" viewBox="0 0 56 56" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
-                        <!-- Ganti icon hamburger garis 2 menjadi kotak 4 -->
+                        <!-- Icon hamburger garis 3 -->
                         <g>
                             <rect width="56" height="56" rx="28" fill="none"></rect>
-                            <rect x="18" y="18" width="6" height="6" rx="1" fill="#fff"/>
-                            <rect x="32" y="18" width="6" height="6" rx="1" fill="#fff"/>
-                            <rect x="18" y="32" width="6" height="6" rx="1" fill="#fff"/>
-                            <rect x="32" y="32" width="6" height="6" rx="1" fill="#fff"/>
+                            <rect x="16" y="20" width="24" height="4" rx="2" fill="#fff"/>
+                            <rect x="16" y="26" width="24" height="4" rx="2" fill="#fff"/>
+                            <rect x="16" y="32" width="24" height="4" rx="2" fill="#fff"/>
                         </g>
                     </svg>
                 </button>

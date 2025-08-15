@@ -64,6 +64,10 @@
                 font-size: 1.2rem !important;
                 text-align: center;
             }
+            /* Sembunyikan icon dekorasi di hero section saat mobile */
+            .contact-hero-shape {
+                display: none !important;
+            }
         }
     </style>
     <section class="hero-section relative overflow-hidden h-screen bg-center bg-cover bg-no-repeat" x-data="{ mobileNavOpen: false }">
@@ -77,10 +81,10 @@
                     <div>
                         <div class="text-black -bottom-10 contact-hero-bg" style="font-size: 12rem; font-weight: 900">Contact</div>
                     </div>
-                    <div class="absolute top-2 -left-9" data-aos="fade-right" data-aos-delay="200">
+                    <div class="absolute top-2 -left-9 contact-hero-shape" data-aos="fade-right" data-aos-delay="200">
                         <img src="{{ asset('images/shape_article_1.svg') }}" alt="shape_article_1" width="130px">
                     </div>
-                    <div class="absolute -top-1 -right-11" data-aos="fade-left" data-aos-delay="300">
+                    <div class="absolute -top-1 -right-11 contact-hero-shape" data-aos="fade-left" data-aos-delay="300">
                         <img src="{{ asset('images/shape_article_2.svg') }}" alt="shape_article_2" width="190px">
                     </div>
                 </div>
@@ -221,8 +225,15 @@
                 Dapatkan diskon khusus dengan membership
             </div>
             <div>
-                <button type="button" class="btn btn-orange px-10 py-2 rounded-full"
-                    style="font-weight: 600 ">DAFTAR</button>
+                @if($linkDaftarLinks->isNotEmpty())
+                <a href="{{ $linkDaftarLinks->first()->url }}"
+                   @if($linkDaftarLinks->first()->open_new_tab) target="_blank" @endif
+                       class="btn btn-orange px-10 py-2 rounded-full text-decoration-none"
+                       style="font-weight: 600">DAFTAR</a>
+                @else
+                    <button type="button" class="btn btn-orange px-10 py-2 rounded-full"
+                        style="font-weight: 600">DAFTAR</button>
+                @endif
             </div>
         </div>
     </section>

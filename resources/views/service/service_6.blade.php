@@ -168,8 +168,15 @@
                 *kamu bisa langsung tanya-tanya ke team representatif kami loh
             </div>
             <div class="flex justify-center items-center" style="padding-top: 4rem">
-                <button type="button" class="btn bg-orange text-black rounded-full service6-btn-lg font-bold"
-                    style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem;">BOOKING SEKARANG</button>
+                @if($linkBookingLinks->isNotEmpty())
+                    <a href="{{ $linkBookingLinks->first()->url }}"
+                       @if($linkBookingLinks->first()->open_new_tab) target="_blank" @endif
+                       class="btn bg-orange text-black rounded-full service6-btn-lg font-bold text-decoration-none"
+                       style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem; font-weight: bold;">BOOKING SEKARANG</a>
+                @else
+                    <button type="button" class="btn bg-orange text-black rounded-full service6-btn-lg font-bold"
+                        style="font-size: 1rem; font-weight: 700; padding: 1.5rem 4rem; font-weight: bold;">BOOKING SEKARANG</button>
+                @endif
             </div>
         </div>
         <div class="absolute left-0 service6-icon-hide" style="top: 12rem">
@@ -187,7 +194,14 @@
             Dapatkan diskon khusus dengan membership
         </div>
         <div>
-            <button type="button" class="btn btn-orange px-8 py-2 rounded-full service6-btn-lg font-bold">DAFTAR</button>
+            @if($linkDaftarLinks->isNotEmpty())
+                <a href="{{ $linkDaftarLinks->first()->url }}"
+                   @if($linkDaftarLinks->first()->open_new_tab) target="_blank" @endif
+                   class="btn btn-orange px-8 py-2 rounded-full service6-btn-lg font-bold text-decoration-none"
+                   style="font-weight: bold; font-size: 15px;">DAFTAR</a>
+            @else
+                <button type="button" class="btn btn-orange px-8 py-2 rounded-full service6-btn-lg font-bold" style="font-weight: bold; font-size: 15px;">DAFTAR</button>
+            @endif
         </div>
     </div>
 </div>
