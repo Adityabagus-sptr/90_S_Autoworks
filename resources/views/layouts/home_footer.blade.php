@@ -25,7 +25,7 @@
                     <ul class="footer-contact-list">
                         <li>
                             <strong>90s Autoworks - Dramaga:</strong><br>
-                            Jl. Raya Dramaga No. 22, RT.03/RW.03, Margajaya,<br> Kec. Bogor Bar., Kota Bogor, Jawa Barat 16116
+                            Jl. Raya Dramaga No. 22, RT.03/RW.03, Margajaya,<br> Kec. Bogor Barat., Kota Bogor, Jawa Barat 16116
                         </li>
                         <li class="mt-4">
                             <strong>90s Autoworks - Pandu Raya:</strong><br>
