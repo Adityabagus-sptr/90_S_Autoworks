@@ -62,7 +62,7 @@
 @endpush
 
 @section('content')
-    <section class="hero-section relative overflow-hidden h-screen bg-center bg-cover bg-no-repeat" x-data="{ mobileNavOpen: false }">
+    <section class="relative h-screen overflow-hidden bg-center bg-no-repeat bg-cover hero-section" x-data="{ mobileNavOpen: false }">
         @include('layouts.topbar')
     </section>
 
@@ -85,23 +85,23 @@
     </section>
 
     <section class="relative overflow-hidden" style="background-color: #2B2B2B; padding: 4rem 0 0 0">
-        <div class="container px-4 py-6 mx-auto flex justify-center">
-            <div class="flex flex-row gap-6 w-full max-w-5xl">
+        <div class="container flex justify-center px-4 py-6 mx-auto">
+            <div class="flex flex-row w-full max-w-5xl gap-6">
                 <!-- Kolom kiri -->
                 <div class="w-75 md:w-2/3" style="min-width:0;">
-                    <h2 class="font-bold text-3xl mb-6 text-white" data-aos="fade-right" data-aos-delay="200">{{ $data->title }}</h2>
+                    <h2 class="mb-6 text-3xl font-bold text-white" data-aos="fade-right" data-aos-delay="200">{{ $data->title }}</h2>
                     @if($data->image)
                         <img src="{{ asset('storage/' . $data->image) }}" alt="{{ $data->title }}" class="w-full mb-4 rounded-xl" data-aos="zoom-in" data-aos-delay="300">
                     @else
                         <img src="{{ asset('images/article_1.png') }}" alt="article" class="w-full mb-4 rounded-xl" data-aos="zoom-in" data-aos-delay="300">
                     @endif
                     
-                    <div class="text-gray-400 mb-4" data-aos="fade-up" data-aos-delay="350">
+                    <div class="mb-4 text-gray-400" data-aos="fade-up" data-aos-delay="350">
                         <span>Dipublikasikan: {{ \Carbon\Carbon::parse($data->published_at)->format('d M Y') }}</span>
                     </div>
                     
-                    <div class="text-gray-200 mb-6" data-aos="fade-up" data-aos-delay="400">
-                        <p class="font-semibold text-xl">{{ $data->description }}</p>
+                    <div class="mb-6 text-gray-200" data-aos="fade-up" data-aos-delay="400">
+                        <p class="text-xl font-semibold">{{ $data->description }}</p>
                     </div>
                     
                     <div class="text-gray-200 break-words content" data-aos="fade-up" data-aos-delay="450">
@@ -110,19 +110,19 @@
 
                     <div style="padding: 4rem 0 4rem 0">
                         <!-- SHARE SECTION -->
-                        <div class="text-center mb-6" data-aos="fade-up" data-aos-delay="500">
-                            <h3 class="text-orange font-semibold text-lg">
+                        <div class="mb-6 text-center" data-aos="fade-up" data-aos-delay="500">
+                            <h3 class="text-lg font-semibold text-orange">
                                 SHARE OUR ARTICLE AND DON'T FORGET TO LEAVE A COMMENT
                             </h3>
                         </div>
-                        <div class="flex gap-4 justify-center mb-4 flex-wrap" data-aos="fade-up" data-aos-delay="550">
-                            <button class="flex bg-blue-600 hover:bg-blue-700 text-white font-semibold transition">
+                        <div class="flex flex-wrap justify-center gap-4 mb-4" data-aos="fade-up" data-aos-delay="550">
+                            <button class="flex font-semibold text-white transition bg-blue-600 hover:bg-blue-700">
                                 <div class="px-3 py-2" style="background-color: #3854E4">
                                     <img src="{{ asset('images/icon_facebook.svg') }}" alt="">
                                 </div>
                                 <div class="px-3 py-2">Facebook</div>
                             </button>
-                            <button class="flex text-white font-semibold transition" style="background-color: #229ED9">
+                            <button class="flex font-semibold text-white transition" style="background-color: #229ED9">
                                 <div class="px-3 py-2" style="background-color: #38C5E4">
                                     <img src="{{ asset('images/icon_tele.svg') }}" alt="">
                                 </div>
@@ -135,40 +135,40 @@
                                 @csrf
 
                                 @if(session('success'))
-                                    <div class="mb-4 p-4 bg-green-500 text-white rounded-xl">
+                                    <div class="p-4 mb-4 text-white bg-green-500 rounded-xl">
                                         {{ session('success') }}
                                     </div>
                                 @endif
 
                                 <div class="mb-4">
-                                    <label for="name" class="block text-orange mb-2 font-medium">NAME</label>
+                                    <label for="name" class="block mb-2 font-medium text-orange">NAME</label>
                                     <input type="text" id="name" name="name"
                                         class="w-full px-4 py-2 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-[#FDC30F] transition"
                                         placeholder="Your Name" required>
                                     @error('name')
-                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-4">
-                                    <label for="email" class="block text-orange mb-2 font-medium">EMAIL</label>
+                                    <label for="email" class="block mb-2 font-medium text-orange">EMAIL</label>
                                     <input type="email" id="email" name="email"
                                         class="w-full px-4 py-2 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-[#FDC30F] transition"
                                         placeholder="Your Email" required>
                                     @error('email')
-                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-6">
-                                    <label for="message" class="block text-orange mb-2 font-medium">MESSAGE</label>
+                                    <label for="message" class="block mb-2 font-medium text-orange">MESSAGE</label>
                                     <textarea id="message" name="message" rows="6"
                                         class="w-full px-4 py-2 rounded-xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-[#FDC30F] transition resize-none"
                                         placeholder="Write your message..." required></textarea>
                                     @error('message')
-                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <input type="hidden" name="is_read" value="0">
-                                <button type="submit" class="w-full text-orange font-bold py-3 rounded-xl transition"
+                                <button type="submit" class="w-full py-3 font-bold transition text-orange rounded-xl"
                                     style="border: 1px solid #FDC30F; background-color: #2B2B2B">
                                     SEND NOW
                                 </button>
@@ -178,10 +178,10 @@
                 </div>
                 <!-- Kolom kanan -->
                 <div class="w-25 md:w-1/3" style="min-width:0;" data-aos="fade-left" data-aos-delay="300">
-                    <h3 class="font-bold text-xl text-white mb-4">Read another article</h3>
+                    <h3 class="mb-4 text-xl font-bold text-white">Read another article</h3>
                     @foreach ($anotherArticles as $item)
-                        <div class="py-4 px-2 mb-2 text-center" style="background-color: #181818" data-aos="fade-up" data-aos-delay="{{ 400 + ($loop->index * 100) }}">
-                            <a href="{{ route('detail-article', $item->slug) }}" class="text-orange font-semibold hover:underline">
+                        <div class="px-2 py-4 mb-2 text-center" style="background-color: #181818" data-aos="fade-up" data-aos-delay="{{ 400 + ($loop->index * 100) }}">
+                            <a href="{{ route('article.detail', $item->slug) }}" class="font-semibold text-orange hover:underline">
                                 {{ $item->title }}
                             </a>
                         </div>
@@ -191,7 +191,7 @@
         </div>
     </section>
     <section class="py-20" style="background-color: #161616">
-        <div class="container px-4 mx-auto flex justify-center items-center gap-6 flex-wrap" data-aos="fade-up" data-aos-delay="100">
+        <div class="container flex flex-wrap items-center justify-center gap-6 px-4 mx-auto" data-aos="fade-up" data-aos-delay="100">
             <div class="membership-text-responsive" style="font-size: 2rem; width: 52rem" data-aos="fade-right" data-aos-delay="200">
                 Dapatkan diskon khusus dengan membership
             </div>
@@ -199,10 +199,10 @@
                 @if($linkDaftarLinks->isNotEmpty())
                     <a href="{{ $linkDaftarLinks->first()->url }}"
                        @if($linkDaftarLinks->first()->open_new_tab) target="_blank" @endif
-                       class="btn btn-orange px-10 py-2 rounded-full text-decoration-none"
+                       class="px-10 py-2 rounded-full btn btn-orange text-decoration-none"
                        style="font-weight: 600; font-size: 20px; font-weight: bold;">DAFTAR</a>
                 @else
-                    <button type="button" class="btn btn-orange px-10 py-2 rounded-full"
+                    <button type="button" class="px-10 py-2 rounded-full btn btn-orange"
                         style="font-weight: 600; font-size: 20px; font-weight: bold;">DAFTAR</button>
                 @endif
             </div>
