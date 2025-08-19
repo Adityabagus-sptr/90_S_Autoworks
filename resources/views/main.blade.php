@@ -8,10 +8,10 @@
     <meta property="og:url" content="https://www.90sautoworks.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="90's Autoworks" />
-    <meta property="og:description" content="90's Autoworks adalah industri layanan perawatan otomotif serba ada" />
+    <meta property="og:description" content="Industri layanan perawatan otomotif serba ada." />
     <meta property="og:logo" content="{{ asset('images/logo_logo.png') }}" />
     <meta property="title" content="90's Autoworks" />
-    <meta property="description" content="90's Autoworks adalah industri layanan perawatan otomotif serba ada" />
+    <meta property="description" content="Industri layanan perawatan otomotif serba ada." />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&amp;display=swap" rel="stylesheet" />
     <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,300,500&amp;display=swap" rel="stylesheet" />
