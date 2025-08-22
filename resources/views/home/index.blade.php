@@ -306,12 +306,18 @@
                 <div class="w-full h-full flex flex-col sm:flex-row items-center justify-center sm:gap-0">
                     @foreach($activeSlides as $slide)
                         <div class="w-full sm:w-auto flex-1 flex items-center justify-center">
+                            @if(!empty($slide->link))
+                                <a href="{{ $slide->link }}" target="_blank" rel="noopener">
+                            @endif
                             <img 
                                 src="{{ asset('storage/' . $slide->image_path) }}" 
                                 alt="{{ $slide->title ?? 'Hero Slide' }}" 
                                 class="hero-slide object-contain sm:object-contain md:object-cover w-full sm:w-screen h-[40vh] sm:h-screen md:h-[90vh] sm:rounded-none transition-all duration-300"
                                 style="max-width: 100%;"
                             />
+                            @if(!empty($slide->link))
+                                </a>
+                            @endif
                         </div>
                     @endforeach
                 </div>

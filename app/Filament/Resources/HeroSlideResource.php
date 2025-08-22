@@ -70,6 +70,11 @@ class HeroSlideResource extends Resource
                     ->label('Judul/Title')
                     ->maxLength(255)
                     ->helperText('Judul untuk gambar hero ini (opsional).'),
+                Forms\Components\TextInput::make('link')
+                    ->label('Link')
+                    ->placeholder('https://example.com')
+                    ->maxLength(2048)
+                    ->helperText('URL tujuan saat slide diklik (opsional).'),
                 Forms\Components\Toggle::make('is_active')
                     ->label('Aktif')
                     ->default(true)
@@ -95,6 +100,10 @@ class HeroSlideResource extends Resource
                     ->label('Judul')
                     ->limit(40)
                     ->toggleable(),
+                Tables\Columns\TextColumn::make('link')
+                    ->label('Link')
+                    ->limit(40)
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\IconColumn::make('is_active')
                     ->label('Aktif')
                     ->boolean()
