@@ -148,6 +148,13 @@
                     </div>
                 @endforeach
             </div>
+
+            <!-- Pagination -->
+            @if ($articleDatas->hasPages())
+                <div class="mt-12 flex justify-center" data-aos="fade-up" data-aos-delay="150">
+                    {{ $articleDatas->onEachSide(1)->links('vendor.pagination.autoworks') }}
+                </div>
+            @endif
         </div>
     </section>
 

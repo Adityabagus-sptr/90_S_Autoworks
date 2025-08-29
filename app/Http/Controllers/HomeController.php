@@ -93,7 +93,7 @@ class HomeController extends Controller
         // Mengambil semua artikel yang dipublikasikan
         $articleDatas = Article::where('is_published', true)
             ->orderBy('published_at', 'desc')
-            ->paginate(6);
+            ->paginate(8);
             
         // Mengambil link WhatsApp dan Google Form
         $linkBookingLinks = Link::active()->byType('link_booking')->ordered()->get();
